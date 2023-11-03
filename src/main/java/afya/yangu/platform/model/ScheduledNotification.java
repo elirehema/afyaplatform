@@ -23,7 +23,6 @@ import javax.persistence.*;
 @Table(name = "m_scheduled_notifications")
 public class ScheduledNotification {
     private static final long serialVersionUID = 1L;
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -33,8 +32,6 @@ public class ScheduledNotification {
 
     @Column(name = "job_name",nullable = false)
     private String jobName;
-
-
     public static ScheduledNotification of(JobDescriptor descriptor, JobDetail detail){
         return new ScheduledNotification(null, descriptor.getGroup(), descriptor.getName());
     }

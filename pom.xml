@@ -3,13 +3,13 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>com.juliuskrah</groupId>
-	<artifactId>quartz-manager</artifactId>
+	<groupId>com.afya.platform</groupId>
+	<artifactId>afya-platform</artifactId>
 	<version>1.0-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>quartz-manager</name>
-	<description>Demo project for Dynamic quartz jobs</description>
+	<name>afya-platform</name>
+	<description>A medical reminder for patients</description>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
@@ -127,6 +127,11 @@
 			<version>${junit.vintage.version}</version>
 			<scope>test</scope>
 		</dependency>
+		<dependency>
+			<groupId>com.cronutils</groupId>
+			<artifactId>cron-utils</artifactId>
+			<version>9.2.0</version>
+		</dependency>
 	</dependencies>
 
 	<build>
@@ -141,12 +146,12 @@
 				<artifactId>jib-maven-plugin</artifactId>
 				<version>0.9.11</version>
 				<configuration>
-					<to>
+					<!--<to>
 						<image>juliuskrah/quartz-manager</image>
 						<tags>
 							<tag>1.x</tag>
 						</tags>
-					</to>
+					</to>-->
 					<container>
 						<environment>
 							<SPRING_OUTPUT_ANSI_ENABLED>ALWAYS</SPRING_OUTPUT_ANSI_ENABLED>

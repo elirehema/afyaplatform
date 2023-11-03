@@ -1,5 +1,10 @@
 liquibase:
   enabled: true
+server:
+  port: 8080
+  contextPath: /context-path
+  servlet:
+    context-path: /api/v1
 spring:
   jackson:
     serialization:
@@ -29,7 +34,7 @@ com:
       config-location: classpath:quartz.properties
 logging:
   level:
-    com.juliuskrah.quartz: debug
+    afya.yangu.platform: debug
 
 # Running with Java 9
 # > mvnw clean package -DskipTests

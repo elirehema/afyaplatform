@@ -26,6 +26,7 @@ import org.springframework.boot.autoconfigure.quartz.AutowireCapableBeanJobFacto
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.scheduling.annotation.AsyncConfigurer;
 import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.scheduling.annotation.EnableScheduling;
@@ -35,6 +36,7 @@ import org.springframework.scheduling.quartz.SchedulerFactoryBean;
 @EnableAsync
 @EnableScheduling
 @SpringBootApplication
+@ComponentScan(basePackages="afya.yangu.platform")
 @EnableConfigurationProperties(QuartzProperties.class)
 public class Application implements AsyncConfigurer {
 	@Autowired

@@ -1,6 +1,8 @@
-package afya.yangu.platform.service;
+package afya.yangu.platform.notification;
 
 import afya.yangu.platform.model.*;
+import afya.yangu.platform.schedules.NotificationSchedule;
+import afya.yangu.platform.service.JobService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
@@ -16,10 +18,12 @@ import java.util.List;
  */
 @Service
 @RequiredArgsConstructor
-public class NotificationService {
+public class NotificationServiceImpl implements NotificationService {
     private final JobService jobService;
     private final NotificationRepository repository;
     private final ScheduledNotificationRepository scheduledNotificationRepository;
+
+
 
     /**
      * A scheduled function to create a Notification Jobs
@@ -33,7 +37,7 @@ public class NotificationService {
             JobDescriptor jd = JobDescriptor.buildDescriptorFromNotification(nt);
             jobService.createJob("notification",jd);
             System.out.println(
-                    "Notification: "+ nt.getMedicineName());
+                    "Notification: "+ nt.getEntityName());
         }
     }
 
@@ -54,5 +58,11 @@ public class NotificationService {
         this.jobService.deleteAllJobs();
         this.scheduledNotificationRepository.deleteAll();
 
+    }
+
+    @Override
+    public void createNotification(NotificationSchedule schedule) {
+        Notification notification = Notification.of(schedule);
+        this.repository.save(notification);
     }
 }

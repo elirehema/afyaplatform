@@ -1,5 +1,6 @@
-package afya.yangu.platform.model;
+package afya.yangu.platform.notification;
 
+import afya.yangu.platform.notification.Notification;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 

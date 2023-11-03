@@ -6,7 +6,7 @@ import org.springframework.core.io.Resource;
 import lombok.Getter;
 import lombok.Setter;
 
-@ConfigurationProperties("com.juliuskrah.quartz")
+@ConfigurationProperties("afya.yangu.platform")
 @Setter
 @Getter
 public class QuartzProperties {

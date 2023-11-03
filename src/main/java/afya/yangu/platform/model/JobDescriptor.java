@@ -18,6 +18,7 @@ package afya.yangu.platform.model;
 import java.time.LocalDateTime;
 import java.util.*;
 
+import afya.yangu.platform.notification.Notification;
 import org.hibernate.validator.constraints.NotBlank;
 import org.hibernate.validator.constraints.NotEmpty;
 import static org.quartz.JobBuilder.*;
@@ -173,7 +174,7 @@ public class JobDescriptor {
 		JobDescriptor job = new JobDescriptor();
 		job.setName(UUID.randomUUID().toString());
 		job.setGroup("notification");
-		job.setMessageBody("Hello "+ n.getPhoneNumber() +", \n This is a reminder to take you medicine"+n.getMedicineName());
+		job.setMessageBody("Hello "+ n.getPhoneNumber() +", \n This is a reminder to take you medicine"+n.getEntityName());
 		job.setSubject("Medicine Reminder");
 		job.setTo(Arrays.asList("rocksandystone@gmail.com","rocksandystone@gmail.com"));
 		TriggerDescriptor triggerDescriptor = new TriggerDescriptor();

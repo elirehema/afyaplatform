@@ -35,83 +35,83 @@ import org.springframework.web.bind.annotation.RestController;
 import lombok.RequiredArgsConstructor;
 
 @RestController
-@RequestMapping("/api/v1.0")
+@RequestMapping("/groups")
 @RequiredArgsConstructor
 public class EmailResource {
 	private final JobService jobService;
 
 	/**
-	 * POST /api/v1.0/groups/:group/jobs
+	 * POST /api/v1.0/:group/jobs
 	 * 
 	 * @param group
 	 * @param descriptor
 	 * @return
 	 */
-	@PostMapping(path = "/groups/{group}/jobs")
+	@PostMapping(path = "/{group}/jobs")
 	public ResponseEntity<JobDescriptor> createJob(@PathVariable String group, @Valid @RequestBody JobDescriptor descriptor) {
 		return new ResponseEntity<>(jobService.createJob(group, descriptor), CREATED);
 	}
 
 	/**
-	 * GET /api/v1.0/groups/:group/jobs/:name
+	 * GET /api/v1.0/:group/jobs/:name
 	 * 
 	 * @param group
 	 * @param name
 	 * @return
 	 */
-	@GetMapping(path = "/groups/{group}/jobs/{name}")
+	@GetMapping(path = "/{group}/jobs/{name}")
 	public ResponseEntity<JobDescriptor> findJob(@PathVariable String group, @PathVariable String name) {
 		return jobService.findJob(group, name).map(ResponseEntity::ok).orElse(ResponseEntity.notFound().build());
 	}
 
 	/**
-	 * PUT /api/v1.0/groups/:group/jobs/:name
+	 * PUT /api/v1.0/:group/jobs/:name
 	 * 
 	 * @param group
 	 * @param name
 	 * @param descriptor
 	 * @return
 	 */
-	@PutMapping(path = "/groups/{group}/jobs/{name}")
+	@PutMapping(path = "/{group}/jobs/{name}")
 	public ResponseEntity<Void> updateJob(@PathVariable String group, @PathVariable String name, @RequestBody JobDescriptor descriptor) {
 		jobService.updateJob(group, name, descriptor);
 		return ResponseEntity.noContent().build();
 	}
 
 	/**
-	 * DELETE /api/v1.0/groups/:group/jobs/:name
+	 * DELETE /api/v1.0/:group/jobs/:name
 	 * 
 	 * @param group
 	 * @param name
 	 * @return
 	 */
-	@DeleteMapping(path = "/groups/{group}/jobs/{name}")
+	@DeleteMapping(path = "/{group}/jobs/{name}")
 	public ResponseEntity<Void> deleteJob(@PathVariable String group, @PathVariable String name) {
 		jobService.deleteJob(group, name);
 		return ResponseEntity.noContent().build();
 	}
 
 	/**
-	 * PATCH /api/v1.0/groups/:group/jobs/:name/pause
+	 * PATCH /api/v1.0/:group/jobs/:name/pause
 	 * 
 	 * @param group
 	 * @param name
 	 * @return
 	 */
-	@PatchMapping(path = "/groups/{group}/jobs/{name}/pause")
+	@PatchMapping(path = "/{group}/jobs/{name}/pause")
 	public ResponseEntity<Void> pauseJob(@PathVariable String group, @PathVariable String name) {
 		jobService.pauseJob(group, name);
 		return ResponseEntity.noContent().build();
 	}
 
 	/**
-	 * PATCH /api/v1.0/groups/:group/jobs/:name/resume
+	 * PATCH /api/v1.0/:group/jobs/:name/resume
 	 * 
 	 * @param group
 	 * @param name
 	 * @return
 	 */
-	@PatchMapping(path = "/groups/{group}/jobs/{name}/resume")
+	@PatchMapping(path = "/{group}/jobs/{name}/resume")
 	public ResponseEntity<Void> resumeJob(@PathVariable String group, @PathVariable String name) {
 		jobService.resumeJob(group, name);
 		return ResponseEntity.noContent().build();
