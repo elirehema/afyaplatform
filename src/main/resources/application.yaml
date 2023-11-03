@@ -1,0 +1,37 @@
+liquibase:
+  enabled: true
+spring:
+  jackson:
+    serialization:
+      write-dates-as-timestamps: false
+  mail:
+    host: smtp.freesmtpservers.com
+    port: 25
+    test-connection: false
+    username:
+    password:
+    properties:
+      mail.smtp.starttls.enable: true
+  jpa:
+    hibernate:
+      ddl-auto: none
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    password:
+    url: jdbc:mysql://localhost:3307/evcsdb
+    username: root
+    jpa:
+      hibernate:
+        ddl-auto: update
+com:
+  juliuskrah:
+    quartz:
+      config-location: classpath:quartz.properties
+logging:
+  level:
+    com.juliuskrah.quartz: debug
+
+# Running with Java 9
+# > mvnw clean package -DskipTests
+# > java --add-modules java.xml.bind --illegal-access=warn -jar target\quartz-manager.jar
+
