@@ -41,4 +41,8 @@ public class NotificationPlan {
     private NotificationFrequencyType frequencyType; // What is that frequency type ? DAILY, WEEKLY etc
     @Column(name="phone_number")
     private String phoneNumber; // The phone number used for notifications
+    public NotificationPlan setId(){
+        this.id = UUID.randomUUID().toString();
+        return this;
+    }
 }

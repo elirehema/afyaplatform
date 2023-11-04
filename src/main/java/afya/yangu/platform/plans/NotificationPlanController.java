@@ -1,6 +1,6 @@
 package afya.yangu.platform.plans;
 
-import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -20,9 +20,13 @@ import static org.springframework.http.HttpStatus.CREATED;
  */
 @RestController
 @RequestMapping("/notifications")
-@RequiredArgsConstructor
 public class NotificationPlanController {
-    NotificationPlanService service;
+    private  final NotificationPlanService service;
+
+    @Autowired
+    public NotificationPlanController(NotificationPlanService service) {
+        this.service = service;
+    }
 
     @PostMapping(path = "")
     public ResponseEntity<NotificationPlan> createNotification( @Valid @RequestBody NotificationPlan requestBody) {

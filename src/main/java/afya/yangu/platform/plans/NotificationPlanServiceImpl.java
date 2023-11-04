@@ -23,7 +23,7 @@ public class NotificationPlanServiceImpl implements NotificationPlanService{
 
     @Override
     public NotificationPlan createNotificationPlan(NotificationPlan request) {
-        NotificationPlan plan = this.repository.save(request);
+        NotificationPlan plan = this.repository.save(request.setId());
        this.scheduleService.createNotificationSchedule(plan);
         return plan;
     }

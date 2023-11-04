@@ -1,4 +1,4 @@
-package afya.yangu.platform.model;
+package afya.yangu.platform.inprogress;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
@@ -9,5 +9,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
  * Time: 12:54 PM
  * To change this template use File | Settings | File and Code Templates.
  */
-public interface ScheduledNotificationRepository extends JpaRepository<ScheduledNotification,Long> {
+public interface NotificationInProgressRepository extends JpaRepository<NotificationInProgress,Long> {
 }

@@ -1,13 +1,12 @@
 package afya.yangu.platform.utils;
 
-import afya.yangu.platform.model.ScheduledNotification;
 import afya.yangu.platform.plans.NotificationFrequencyType;
-import afya.yangu.platform.plans.NotificationPlan;
 import afya.yangu.platform.schedules.NotificationSchedule;
 import com.cronutils.builder.CronBuilder;
 import com.cronutils.model.Cron;
 import com.cronutils.model.CronType;
 import com.cronutils.model.definition.CronDefinitionBuilder;
+import com.cronutils.model.field.value.SpecialChar;
 
 import static com.cronutils.model.field.expression.FieldExpressionFactory.*;
 
@@ -25,15 +24,46 @@ public class CronsParseUtility {
     }
     public String createCronExpression() {
         CronBuilder builder = CronBuilder.cron(CronDefinitionBuilder.instanceDefinitionFor(CronType.QUARTZ));
-        Cron cron = builder.instance();
+        //Cron cron = builder.instance();
         if (this.schedule.getFrequencyType().equals(NotificationFrequencyType.DAILY)) {
-            cron = builder
+           Cron cron = builder
+                   .withYear(on(schedule.getStartDate().getYear()))
+                   .withDoM(between(schedule.getStartDate().getDayOfMonth(),schedule.getEndDate().getDayOfMonth()))
+                   .withMonth(between(schedule.getStartDate().getMonthValue(), schedule.getEndDate().getMonthValue()))
+                   .withDoW(questionMark())
+                   .withHour(always())
+                   .withMinute(always())
+                   .withSecond(on(0))
+                   .instance();
+           /** RESERSED FOR LIVE TASK **/
+           /**
+            Cron cron = builder
+                    .withYear(on(schedule.getStartDate().getYear()))
+                    .withDoM(between(schedule.getStartDate().getDayOfMonth(),schedule.getEndDate().getDayOfMonth()))
+                    .withMonth(between(schedule.getStartDate().getMonthValue(), schedule.getEndDate().getMonthValue()))
+                    .withDoW(questionMark())
                     .withHour(every(8))
-                    .withHour(between(8,22))
+                    .withMinute(on(1))
                     .withSecond(on(0))
                     .instance();
+            **/
+            return cron.asString();
         }
+        return "null";
 
-        return cron.toString();
+    }
+
+    public static void main(String[] args) {
+        CronBuilder builder = CronBuilder.cron(CronDefinitionBuilder.instanceDefinitionFor(CronType.QUARTZ));
+        Cron cron = builder
+                .withYear(on(2023))
+                .withDoM(between(1, 3))
+                .withMonth(always())
+                .withDoW(questionMark())
+                .withHour(every(8))
+                .withMinute(on(1))
+                .withSecond(on(0))
+                .instance();
+        System.out.println(cron.asString());
     }
 }
