@@ -26,7 +26,7 @@ public class NotificationScheduleServiceImpl implements NotificationScheduleServ
     @Override
     public void createNotificationSchedule(NotificationPlan plan) {
         NotificationSchedule schedule = NotificationSchedule.of(plan);
-        this.notificationService.createNotification(schedule);
-        this.scheduleRepository.save(schedule);
+        NotificationSchedule sc = this.scheduleRepository.save(schedule);
+        this.notificationService.createNotification(sc);
     }
 }

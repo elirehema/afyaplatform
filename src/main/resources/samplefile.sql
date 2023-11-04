@@ -1,3 +1,4 @@
+DROP TABLE IF EXISTS `m_scheduled_notifications`;
 CREATE TABLE m_scheduled_notifications (
   id BIGINT AUTO_INCREMENT NOT NULL,
    group_name VARCHAR(255) NOT NULL,
@@ -30,6 +31,7 @@ CREATE TABLE m_notification_plans (
    phone_number VARCHAR(255) NULL,
    CONSTRAINT pk_m_notification_plans PRIMARY KEY (id)
 );
+
 DROP TABLE IF EXISTS m_notifications;
 CREATE TABLE m_notifications (
   schedule_id VARCHAR(255) NOT NULL,

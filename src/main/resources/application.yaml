@@ -1,10 +1,5 @@
 liquibase:
   enabled: true
-server:
-  port: 8080
-  contextPath: /context-path
-  servlet:
-    context-path: /api/v1
 spring:
   jackson:
     serialization:
@@ -22,15 +17,15 @@ spring:
       ddl-auto: none
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    password:
-    url: jdbc:mysql://localhost:3307/evcsdb
+    url: jdbc:mysql://localhost:3306/evcsdb
     username: root
+    password: mysql
     jpa:
       hibernate:
         ddl-auto: update
-com:
-  juliuskrah:
-    quartz:
+afya:
+  yangu:
+    platform:
       config-location: classpath:quartz.properties
 logging:
   level:

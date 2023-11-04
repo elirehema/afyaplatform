@@ -21,8 +21,8 @@ import java.util.Objects;
 import java.util.Set;
 
 import afya.yangu.platform.model.JobDescriptor;
-import afya.yangu.platform.model.ScheduledNotification;
-import afya.yangu.platform.model.ScheduledNotificationRepository;
+import afya.yangu.platform.inprogress.NotificationInProgress;
+import afya.yangu.platform.inprogress.NotificationInProgressRepository;
 import org.quartz.JobBuilder;
 import org.quartz.JobDataMap;
 import org.quartz.JobDetail;
@@ -47,7 +47,7 @@ import lombok.extern.slf4j.Slf4j;
 public class EmailService extends AbstractJobService {
 
 	@Autowired
-	private ScheduledNotificationRepository notificationRepository;
+	private NotificationInProgressRepository notificationRepository;
 
 	public EmailService(Scheduler scheduler) {
 		super(scheduler);
@@ -65,7 +65,7 @@ public class EmailService extends AbstractJobService {
 		try {
 			scheduler.scheduleJob(jobDetail, triggersForJob, false);
 			log.info("Job with key - {} saved sucessfully", jobDetail.getKey());
-			ScheduledNotification notification = ScheduledNotification.of(descriptor, jobDetail);
+			NotificationInProgress notification = NotificationInProgress.of(descriptor, jobDetail);
 			this.notificationRepository.save(notification);
 		} catch (SchedulerException e) {
 			log.error("Could not save job with key - {} due to error - {}", jobDetail.getKey(), e.getLocalizedMessage());

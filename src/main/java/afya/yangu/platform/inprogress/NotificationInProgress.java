@@ -1,5 +1,6 @@
-package afya.yangu.platform.model;
+package afya.yangu.platform.inprogress;
 
+import afya.yangu.platform.model.JobDescriptor;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -20,8 +21,8 @@ import javax.persistence.*;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "m_scheduled_notifications")
-public class ScheduledNotification {
+@Table(name = "m_notification_inprogress")
+public class NotificationInProgress {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -32,7 +33,7 @@ public class ScheduledNotification {
 
     @Column(name = "job_name",nullable = false)
     private String jobName;
-    public static ScheduledNotification of(JobDescriptor descriptor, JobDetail detail){
-        return new ScheduledNotification(null, descriptor.getGroup(), descriptor.getName());
+    public static NotificationInProgress of(JobDescriptor descriptor, JobDetail detail){
+        return new NotificationInProgress(null, descriptor.getGroup(), descriptor.getName());
     }
 }

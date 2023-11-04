@@ -14,6 +14,6 @@ import java.util.List;
  * To change this template use File | Settings | File and Code Templates.
  */
 public interface NotificationRepository extends JpaRepository<Notification, String> {
-    @Query("SELECT n FROM Notification n WHERE DATE(n.endDate) <= CURRENT_DATE")
+    @Query("SELECT n FROM Notification n WHERE CURRENT_DATE  <=  DATE(n.endDate)")
     List<Notification> findByEndDate();
 }
