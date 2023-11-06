@@ -1,0 +1,827 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1506785516871-1
+      author: elirehema
+      objectQuotingStrategy: QUOTE_ALL_OBJECTS
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                  name: sched_name
+                  type: varchar(120)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: trigger_name
+                  type: varchar(200)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: trigger_group
+                  type: varchar(200)
+              - column:
+                  name: blob_data
+                  type: blob
+            tableName: qrtz_blob_triggers
+  - changeSet:
+      id: 1506785516871-2
+      author: elirehema
+      objectQuotingStrategy: QUOTE_ALL_OBJECTS
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                  name: sched_name
+                  type: varchar(120)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: calendar_name
+                  type: varchar(200)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: calendar
+                  type: blob
+            tableName: qrtz_calendars
+  - changeSet:
+      id: 1506785516871-3
+      author: elirehema
+      objectQuotingStrategy: QUOTE_ALL_OBJECTS
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                  name: sched_name
+                  type: varchar(120)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: trigger_name
+                  type: varchar(200)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: trigger_group
+                  type: varchar(200)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: cron_expression
+                  type: varchar(120)
+              - column:
+                  name: time_zone_id
+                  type: varchar(80)
+            tableName: qrtz_cron_triggers
+  - changeSet:
+      id: 1506785516871-4
+      author: elirehema
+      objectQuotingStrategy: QUOTE_ALL_OBJECTS
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                  name: sched_name
+                  type: varchar(120)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: entry_id
+                  type: varchar(95)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: trigger_name
+                  type: varchar(200)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: trigger_group
+                  type: varchar(200)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: instance_name
+                  type: varchar(200)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: fired_time
+                  type: numeric(13)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: sched_time
+                  type: numeric(13)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: priority
+                  type: int
+              - column:
+                  constraints:
+                    nullable: false
+                  name: state
+                  type: varchar(16)
+              - column:
+                  name: job_name
+                  type: varchar(200)
+              - column:
+                  name: job_group
+                  type: varchar(200)
+              - column:
+                  name: is_nonconcurrent
+                  type: boolean
+              - column:
+                  name: requests_recovery
+                  type: boolean
+            tableName: qrtz_fired_triggers
+  - changeSet:
+      id: 1506785516871-5
+      author: elirehema
+      objectQuotingStrategy: QUOTE_ALL_OBJECTS
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                  name: sched_name
+                  type: varchar(120)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: job_name
+                  type: varchar(200)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: job_group
+                  type: varchar(200)
+              - column:
+                  name: description
+                  type: varchar(250)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: job_class_name
+                  type: varchar(250)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: is_durable
+                  type: boolean
+              - column:
+                  constraints:
+                    nullable: false
+                  name: is_nonconcurrent
+                  type: boolean
+              - column:
+                  constraints:
+                    nullable: false
+                  name: is_update_data
+                  type: boolean
+              - column:
+                  constraints:
+                    nullable: false
+                  name: requests_recovery
+                  type: boolean
+              - column:
+                  name: job_data
+                  type: BYTEA
+            tableName: qrtz_job_details
+  - changeSet:
+      id: 1506785516871-6
+      author: elirehema
+      objectQuotingStrategy: QUOTE_ALL_OBJECTS
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                  name: sched_name
+                  type: varchar(120)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: lock_name
+                  type: varchar(40)
+            tableName: qrtz_locks
+  - changeSet:
+      id: 1506785516871-7
+      author: elirehema
+      objectQuotingStrategy: QUOTE_ALL_OBJECTS
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                  name: sched_name
+                  type: varchar(120)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: trigger_group
+                  type: varchar(200)
+            tableName: qrtz_paused_trigger_grps
+  - changeSet:
+      id: 1506785516871-8
+      author: elirehema
+      objectQuotingStrategy: QUOTE_ALL_OBJECTS
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                  name: sched_name
+                  type: varchar(120)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: instance_name
+                  type: varchar(200)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: last_checkin_time
+                  type: numeric(13)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: checkin_interval
+                  type: numeric(13)
+            tableName: qrtz_scheduler_state
+  - changeSet:
+      id: 1506785516871-9
+      author: elirehema
+      objectQuotingStrategy: QUOTE_ALL_OBJECTS
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                  name: sched_name
+                  type: varchar(120)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: trigger_name
+                  type: varchar(200)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: trigger_group
+                  type: varchar(200)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: repeat_count
+                  type: numeric(7)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: repeat_interval
+                  type: numeric(12)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: times_triggered
+                  type: numeric(10)
+            tableName: qrtz_simple_triggers
+  - changeSet:
+      id: 1506785516871-10
+      author: elirehema
+      objectQuotingStrategy: QUOTE_ALL_OBJECTS
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                  name: sched_name
+                  type: varchar(120)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: trigger_name
+                  type: varchar(200)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: trigger_group
+                  type: varchar(200)
+              - column:
+                  name: str_prop_1
+                  type: varchar(512)
+              - column:
+                  name: str_prop_2
+                  type: varchar(512)
+              - column:
+                  name: str_prop_3
+                  type: varchar(512)
+              - column:
+                  name: int_prop_1
+                  type: numeric(9)
+              - column:
+                  name: int_prop_2
+                  type: numeric(9)
+              - column:
+                  name: long_prop_1
+                  type: numeric(13)
+              - column:
+                  name: long_prop_2
+                  type: numeric(13)
+              - column:
+                  name: dec_prop_1
+                  type: numeric(13, 4)
+              - column:
+                  name: dec_prop_2
+                  type: numeric(13, 4)
+              - column:
+                  name: bool_prop_1
+                  type: boolean
+              - column:
+                  name: bool_prop_2
+                  type: boolean
+            tableName: qrtz_simprop_triggers
+  - changeSet:
+      id: 1506785516871-11
+      author: elirehema
+      objectQuotingStrategy: QUOTE_ALL_OBJECTS
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                  name: sched_name
+                  type: varchar(120)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: trigger_name
+                  type: varchar(200)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: trigger_group
+                  type: varchar(200)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: job_name
+                  type: varchar(200)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: job_group
+                  type: varchar(200)
+              - column:
+                  name: description
+                  type: varchar(250)
+              - column:
+                  name: next_fire_time
+                  type: numeric(13)
+              - column:
+                  name: prev_fire_time
+                  type: numeric(13)
+              - column:
+                  name: priority
+                  type: int
+              - column:
+                  constraints:
+                    nullable: false
+                  name: trigger_state
+                  type: varchar(16)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: trigger_type
+                  type: varchar(8)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: start_time
+                  type: numeric(13)
+              - column:
+                  name: end_time
+                  type: numeric(13)
+              - column:
+                  name: calendar_name
+                  type: varchar(200)
+              - column:
+                  name: misfire_instr
+                  type: numeric(2)
+              - column:
+                  name: job_data
+                  type: BYTEA
+            tableName: qrtz_triggers
+
+  - changeSet:
+      id: 1506785516871-12
+      author: elirehema
+      objectQuotingStrategy: QUOTE_ALL_OBJECTS
+      changes:
+        - addPrimaryKey:
+            columnNames: sched_name, job_name, job_group
+            constraintName: sys_pk_10100
+            tableName: qrtz_job_details
+  - changeSet:
+      id: 1506785516871-13
+      author: elirehema
+      objectQuotingStrategy: QUOTE_ALL_OBJECTS
+      changes:
+        - addPrimaryKey:
+            columnNames: sched_name, trigger_name, trigger_group
+            constraintName: sys_pk_10118
+            tableName: qrtz_triggers
+  - changeSet:
+      id: 1506785516871-14
+      author: elirehema
+      objectQuotingStrategy: QUOTE_ALL_OBJECTS
+      changes:
+        - addPrimaryKey:
+            columnNames: sched_name, trigger_name, trigger_group
+            constraintName: sys_pk_10137
+            tableName: qrtz_simple_triggers
+  - changeSet:
+      id: 1506785516871-15
+      author: elirehema
+      objectQuotingStrategy: QUOTE_ALL_OBJECTS
+      changes:
+        - addPrimaryKey:
+            columnNames: sched_name, trigger_name, trigger_group
+            constraintName: sys_pk_10152
+            tableName: qrtz_cron_triggers
+  - changeSet:
+      id: 1506785516871-16
+      author: elirehema
+      objectQuotingStrategy: QUOTE_ALL_OBJECTS
+      changes:
+        - addPrimaryKey:
+            columnNames: sched_name, trigger_name, trigger_group
+            constraintName: sys_pk_10164
+            tableName: qrtz_simprop_triggers
+  - changeSet:
+      id: 1506785516871-17
+      author: elirehema
+      objectQuotingStrategy: QUOTE_ALL_OBJECTS
+      changes:
+        - addPrimaryKey:
+            columnNames: sched_name, trigger_name, trigger_group
+            constraintName: sys_pk_10175
+            tableName: qrtz_blob_triggers
+  - changeSet:
+      id: 1506785516871-18
+      author: elirehema
+      objectQuotingStrategy: QUOTE_ALL_OBJECTS
+      changes:
+        - addPrimaryKey:
+            columnNames: sched_name, calendar_name
+            constraintName: sys_pk_10186
+            tableName: qrtz_calendars
+  - changeSet:
+      id: 1506785516871-19
+      author: elirehema
+      objectQuotingStrategy: QUOTE_ALL_OBJECTS
+      changes:
+        - addPrimaryKey:
+            columnNames: sched_name, trigger_group
+            constraintName: sys_pk_10193
+            tableName: qrtz_paused_trigger_grps
+  - changeSet:
+      id: 1506785516871-20
+      author: elirehema
+      objectQuotingStrategy: QUOTE_ALL_OBJECTS
+      changes:
+        - addPrimaryKey:
+            columnNames: sched_name, entry_id
+            constraintName: sys_pk_10206
+            tableName: qrtz_fired_triggers
+  - changeSet:
+      id: 1506785516871-21
+      author: elirehema
+      objectQuotingStrategy: QUOTE_ALL_OBJECTS
+      changes:
+        - addPrimaryKey:
+            columnNames: sched_name, instance_name
+            constraintName: sys_pk_10221
+            tableName: qrtz_scheduler_state
+  - changeSet:
+      id: 1506785516871-22
+      author: elirehema
+      objectQuotingStrategy: QUOTE_ALL_OBJECTS
+      changes:
+        - addPrimaryKey:
+            columnNames: sched_name, lock_name
+            constraintName: sys_pk_10229
+            tableName: qrtz_locks
+  - changeSet:
+      id: 1506785516871-23
+      author: elirehema
+      objectQuotingStrategy: QUOTE_ALL_OBJECTS
+      changes:
+        - createIndex:
+            columns:
+              - column:
+                  name: sched_name
+              - column:
+                  name: job_name
+              - column:
+                  name: job_group
+            indexName: sys_idx_sys_fk_10119_10129
+            tableName: qrtz_triggers
+  - changeSet:
+      id: 1506785516871-24
+      author: elirehema
+      objectQuotingStrategy: QUOTE_ALL_OBJECTS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: sched_name,job_name,job_group
+            baseTableName: qrtz_triggers
+            constraintName: sys_fk_10119
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: NO ACTION
+            onUpdate: NO ACTION
+            referencedColumnNames: sched_name,job_name,job_group
+            referencedTableName: qrtz_job_details
+  - changeSet:
+      id: 1506785516871-25
+      author: elirehema
+      objectQuotingStrategy: QUOTE_ALL_OBJECTS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: sched_name,trigger_name,trigger_group
+            baseTableName: qrtz_simple_triggers
+            constraintName: sys_fk_10138
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: no action
+            onUpdate: no action
+            referencedColumnNames: sched_name,trigger_name,trigger_group
+            referencedTableName: qrtz_triggers
+  - changeSet:
+      id: 1506785516871-26
+      author: elirehema
+      objectQuotingStrategy: QUOTE_ALL_OBJECTS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: sched_name,trigger_name,trigger_group
+            baseTableName: qrtz_cron_triggers
+            constraintName: sys_fk_10153
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: no action
+            onUpdate: no action
+            referencedColumnNames: sched_name,trigger_name,trigger_group
+            referencedTableName: qrtz_triggers
+  - changeSet:
+      id: 1506785516871-27
+      author: elirehema
+      objectQuotingStrategy: QUOTE_ALL_OBJECTS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: sched_name,trigger_name,trigger_group
+            baseTableName: qrtz_simprop_triggers
+            constraintName: sys_fk_10165
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: no action
+            onUpdate: no action
+            referencedColumnNames: sched_name,trigger_name,trigger_group
+            referencedTableName: qrtz_triggers
+  - changeSet:
+      id: 1506785516871-28
+      author: elirehema
+      objectQuotingStrategy: QUOTE_ALL_OBJECTS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: sched_name,trigger_name,trigger_group
+            baseTableName: qrtz_blob_triggers
+            constraintName: sys_fk_10176
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: no action
+            onUpdate: no action
+            referencedColumnNames: sched_name,trigger_name,trigger_group
+            referencedTableName: qrtz_triggers
+  - changeSet:
+      id: 1506785516871-29
+      author: elirehema
+      objectQuotingStrategy: QUOTE_ALL_OBJECTS
+      changes:
+        - createTable:
+            tableName: m_scheduled_notifications
+            columns:
+              - column:
+                  name: id
+                  type: int
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  constraints:
+                    nullable: false
+                  name: group_name
+                  type: varchar(50)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: job_name
+                  type: varchar(50)
+  - changeSet:
+      id: 1506785516871-30
+      author: elirehema
+      objectQuotingStrategy: QUOTE_ALL_OBJECTS
+      changes:
+        - createTable:
+            tableName: m_notification_schedules
+            columns:
+              - column:
+                  name: id
+                  type: varchar(50)
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  constraints:
+                    nullable: false
+                  name: entity_name
+                  type: varchar(50)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: quantity
+                  type: varchar(50)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: start_date
+                  type: datetime
+              - column:
+                  constraints:
+                    nullable: false
+                  name: end_date
+                  type: datetime
+              - column:
+                  constraints:
+                    nullable: false
+                  name: no_of_days
+                  type: int
+              - column:
+                  constraints:
+                    nullable: false
+                  name: frequency
+                  type: int
+              - column:
+                  constraints:
+                    nullable: false
+                  name: frequency_type
+                  type: varchar(10)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: phone_number
+                  type: varchar(15)
+  - changeSet:
+      id: 1506785516871-31
+      author: elirehema
+      objectQuotingStrategy: QUOTE_ALL_OBJECTS
+      changes:
+        - createTable:
+            tableName: m_notification_plans
+            columns:
+              - column:
+                  name: id
+                  type: varchar(50)
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  constraints:
+                    nullable: false
+                  name: entity_name
+                  type: varchar(50)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: quantity
+                  type: varchar(50)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: start_date
+                  type: datetime
+              - column:
+                  constraints:
+                    nullable: false
+                  name: no_of_days
+                  type: int
+              - column:
+                  constraints:
+                    nullable: false
+                  name: frequency
+                  type: int
+              - column:
+                  constraints:
+                    nullable: false
+                  name: frequency_type
+                  type: varchar(10)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: phone_number
+                  type: varchar(15)
+  - changeSet:
+      id: 1506785516871-32
+      author: elirehema
+      objectQuotingStrategy: QUOTE_ALL_OBJECTS
+      changes:
+        - createTable:
+            tableName: m_notifications
+            columns:
+              - column:
+                  name: schedule_id
+                  type: varchar(50)
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  constraints:
+                    nullable: false
+                  name: entity_name
+                  type: varchar(50)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: start_date
+                  type: datetime
+              - column:
+                  constraints:
+                    nullable: false
+                  name: end_date
+                  type: datetime
+              - column:
+                  constraints:
+                    nullable: false
+                  name: cron
+                  type: varchar(50)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: phone_number
+                  type: varchar(15)
+  - changeSet:
+      id: 1506785516871-33
+      author: elirehema
+      objectQuotingStrategy: QUOTE_ALL_OBJECTS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: schedule_id
+            baseTableName: m_notifications
+            constraintName: sys_fk_notification
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: no action
+            onUpdate: no action
+            referencedColumnNames: id
+            referencedTableName: m_notification_schedules
+  - changeSet:
+      id: 1506785516871-34
+      author: elirehema
+      objectQuotingStrategy: QUOTE_ALL_OBJECTS
+      changes:
+        - createTable:
+            tableName: m_notification_inprogress
+            columns:
+              - column:
+                  name: id
+                  type: int
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: group_name
+                  type: varchar(50)
+                  constraints:
+                    nullable: false
+              - column:
+                  constraints:
+                    nullable: false
+                  name: job_name
+                  type: varchar(50)
