@@ -45,4 +45,14 @@ public class NotificationPlan {
         this.id = UUID.randomUUID().toString();
         return this;
     }
+
+    public void update(NotificationPlan p){
+        this.entityName = p.entityName;
+        this.quantity = p.quantity;
+        this.startDate = p.startDate;
+        this.days = p.days;
+        this.frequency = p.frequency;
+        this.phoneNumber = p.getPhoneNumber();
+        this.frequencyType = p.getFrequencyType();
+    }
 }

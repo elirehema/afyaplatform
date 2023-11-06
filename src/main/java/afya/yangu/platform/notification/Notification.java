@@ -48,4 +48,12 @@ public class Notification implements Serializable {
         CronsParseUtility utility = new CronsParseUtility(schedule);
         return new Notification(UUID.randomUUID().toString(), schedule.getPhoneNumber(), schedule.getStartDate(),schedule.getEndDate(), schedule.getEntityName(), utility.createCronExpression(), schedule);
     }
+    public void update(NotificationSchedule schedule){
+        CronsParseUtility utility = new CronsParseUtility(schedule);
+        this.phoneNumber = schedule.getPhoneNumber();
+        this.startDate = schedule.getStartDate();
+        this.endDate = schedule.getEndDate();
+        this.entityName = schedule.getEntityName();
+        this.cron = utility.createCronExpression();
+    }
 }

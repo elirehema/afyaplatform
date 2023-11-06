@@ -46,7 +46,7 @@ public class NotificationSchedule {
     @Enumerated(EnumType.STRING)
     private NotificationFrequencyType frequencyType; // What is that frequency type ? DAILY, WEEKLY etc
     @Column(name="phone_number")
-    private String phoneNumber; // The phone number used for notifications
+    private String phoneNumber; // The phone number used for SMS delivery
 
     public static NotificationSchedule of(NotificationPlan plan){
         NotificationSchedule sc = new NotificationSchedule();

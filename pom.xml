@@ -78,11 +78,17 @@
 			<artifactId>spring-boot-devtools</artifactId>
 			<scope>runtime</scope>
 		</dependency>
-		<!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
+		<!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
 			<version>8.0.22</version>
+		</dependency>-->
+		<dependency>
+			<groupId>org.postgresql</groupId>
+			<artifactId>postgresql</artifactId>
+			<scope>runtime</scope>
+			<version>42.2.27</version>
 		</dependency>
 
 		<dependency>
@@ -151,12 +157,12 @@
 				<artifactId>jib-maven-plugin</artifactId>
 				<version>0.9.11</version>
 				<configuration>
-					<!--<to>
+					<to>
 						<image>juliuskrah/quartz-manager</image>
 						<tags>
 							<tag>1.x</tag>
 						</tags>
-					</to>-->
+					</to>
 					<container>
 						<environment>
 							<SPRING_OUTPUT_ANSI_ENABLED>ALWAYS</SPRING_OUTPUT_ANSI_ENABLED>
