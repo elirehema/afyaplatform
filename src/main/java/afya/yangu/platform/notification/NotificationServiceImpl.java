@@ -67,4 +67,20 @@ public class NotificationServiceImpl implements NotificationService {
         Notification notification = Notification.of(schedule);
         this.repository.save(notification);
     }
+
+    @Override
+    public void updateNotification(String id,NotificationSchedule payload) {
+         this.repository.findById(id).map(notification -> {
+            notification.update(payload);
+            return this.repository.save(notification);
+        });
+    }
+
+    @Override
+    public void deleteNotification(String id) {
+        this.repository.findById(id).map(notification -> {
+            this.repository.delete(notification);
+            return null;
+        });
+    }
 }

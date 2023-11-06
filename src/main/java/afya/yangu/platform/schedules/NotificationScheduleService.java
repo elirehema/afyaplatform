@@ -11,4 +11,5 @@ import afya.yangu.platform.plans.NotificationPlan;
  */
 public interface NotificationScheduleService {
     void createNotificationSchedule(NotificationPlan plan);
+    void updateNotificationSchedule(NotificationPlan plan);
 }
