@@ -69,8 +69,8 @@ public class NotificationServiceImpl implements NotificationService {
     }
 
     @Override
-    public void updateNotification(String id,NotificationSchedule payload) {
-         this.repository.findById(id).map(notification -> {
+    public void updateNotification(NotificationSchedule payload) {
+         this.repository.findById(payload.getId()).map(notification -> {
             notification.update(payload);
             return this.repository.save(notification);
         });

@@ -8,7 +8,6 @@ import org.springframework.data.jpa.convert.threeten.Jsr310JpaConverters;
 
 import javax.persistence.*;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.UUID;
 
 /**
@@ -27,7 +26,7 @@ import java.util.UUID;
 public class NotificationPlan {
     private static final long serialVersionUID = 1L;
     @Id
-    private String id = UUID.randomUUID().toString();
+    private String id;
     @Column(name = "entity_name")
     private String entityName; // Name of medicine, pills, syrup, injection etc
     private String quantity; // Quantity to use in a single consumption 1,2,3....etc
@@ -46,7 +45,7 @@ public class NotificationPlan {
         return this;
     }
 
-    public void update(NotificationPlan p){
+    public void updateWithPlan(NotificationPlan p){
         this.entityName = p.entityName;
         this.quantity = p.quantity;
         this.startDate = p.startDate;

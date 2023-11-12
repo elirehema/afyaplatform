@@ -697,6 +697,12 @@ databaseChangeLog:
                     nullable: false
                   name: phone_number
                   type: varchar(15)
+              - column:
+                  name: plan_id
+                  type: varchar(50)
+                  constraints:
+                    foreignKey: true
+                    nullable: false
   - changeSet:
       id: 1506785516871-31
       author: elirehema
@@ -825,3 +831,18 @@ databaseChangeLog:
                     nullable: false
                   name: job_name
                   type: varchar(50)
+  - changeSet:
+      id: 1506785516871-35
+      author: elirehema
+      objectQuotingStrategy: QUOTE_ALL_OBJECTS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: plan_id
+            baseTableName: m_notification_schedules
+            constraintName: sys_fk_schedule_plan
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: CASCADE
+            onUpdate: CASCADE
+            referencedColumnNames: id
+            referencedTableName: m_notification_plans
