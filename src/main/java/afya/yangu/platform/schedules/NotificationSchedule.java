@@ -30,7 +30,7 @@ import java.util.UUID;
 public class NotificationSchedule {
     private static final long serialVersionUID = 1L;
     @Id
-    private String id = UUID.randomUUID().toString();
+    private String id;
     @Column(name = "entity_name")
     private String entityName; // Name of medicine, pills, syrup, injection etc
     private String quantity; // Quantity to use in a single consumption 1,2,3....etc
@@ -47,6 +47,9 @@ public class NotificationSchedule {
     private NotificationFrequencyType frequencyType; // What is that frequency type ? DAILY, WEEKLY etc
     @Column(name="phone_number")
     private String phoneNumber; // The phone number used for SMS delivery
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "plan_id")
+    private NotificationPlan plan;
 
     public static NotificationSchedule of(NotificationPlan plan){
         NotificationSchedule sc = new NotificationSchedule();
@@ -58,6 +61,18 @@ public class NotificationSchedule {
         sc.setFrequency(plan.getFrequency());
         sc.setFrequencyType(plan.getFrequencyType());
         sc.setPhoneNumber(plan.getPhoneNumber());
+        sc.setPlan(plan);
+        sc.setId(UUID.randomUUID().toString());
         return sc;
+    }
+    public void updateWithPlan(NotificationPlan plan){
+        this.entityName = plan.getEntityName();
+        this.quantity = plan.getQuantity();
+        this.startDate = plan.getStartDate().atTime(LocalTime.now());
+        this.endDate = plan.getStartDate().plusDays(plan.getDays()).atTime(LocalTime.now());
+        this.days = plan.getDays();
+        this.frequency = plan.getFrequency();
+        this.frequencyType = plan.getFrequencyType();
+        this.phoneNumber = plan.getPhoneNumber();
     }
 }

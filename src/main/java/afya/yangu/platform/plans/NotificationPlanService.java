@@ -5,6 +5,7 @@ import java.util.List;
 public interface NotificationPlanService {
     NotificationPlan createNotificationPlan(NotificationPlan request);
     List<NotificationPlan> retrieveNotificationPlans();
-    void updateNotificationPlan(NotificationPlan request);
+    NotificationPlan retrieveNotificationPlan(String id);
+    void updateNotificationPlan(String id, NotificationPlan request);
     void deleteNotificationPlan(String id);
 }

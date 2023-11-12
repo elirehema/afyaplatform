@@ -36,12 +36,18 @@ public class NotificationPlanServiceImpl implements NotificationPlanService{
     }
 
     @Override
-    public void updateNotificationPlan(NotificationPlan request) {
-        this.repository.findById(request.getId()).map(notification->{
-            notification.update(request);
-            this.repository.save(notification);
+    public NotificationPlan retrieveNotificationPlan(String id) {
+        return this.repository.findById(id).get();
+    }
+
+    @Override
+    public void updateNotificationPlan(String id,NotificationPlan request) {
+        this.repository.findById(id).map(notification->{
+            notification.updateWithPlan(request);
+            NotificationPlan plan  = this.repository.save(notification);
+            this.scheduleService.updateNotificationSchedule(plan);
             return null;
-        }).orElseThrow(()-> new RuntimeException("Notification can not be found"));
+        });//.orElseThrow(()-> new RuntimeException("Notification can not be found"));
     }
     @Override
     public void deleteNotificationPlan(String id) {

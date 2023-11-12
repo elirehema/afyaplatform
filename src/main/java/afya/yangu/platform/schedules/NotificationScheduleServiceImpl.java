@@ -29,4 +29,14 @@ public class NotificationScheduleServiceImpl implements NotificationScheduleServ
         NotificationSchedule sc = this.scheduleRepository.save(schedule);
         this.notificationService.createNotification(sc);
     }
+
+    @Override
+    public void updateNotificationSchedule(NotificationPlan plan) {
+        this.scheduleRepository.findByNotificationPlanId(plan.getId()).map(schedule->{
+            schedule.updateWithPlan(plan);
+            NotificationSchedule updated = this.scheduleRepository.save(schedule);
+            this.notificationService.updateNotification(updated);
+            return null;
+        });//.orElseThrow(()-> new RuntimeException("Notification schedule not found"));
+    }
 }
